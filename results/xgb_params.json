@@ -1,0 +1,128 @@
+{
+  "SPX": {
+    "params_h1": {
+      "colsample_bytree": 0.8,
+      "learning_rate": 0.03,
+      "max_depth": 2,
+      "min_child_weight": 20,
+      "n_estimators": 500,
+      "subsample": 0.8
+    },
+    "params_h5": {
+      "colsample_bytree": 0.8,
+      "learning_rate": 0.03,
+      "max_depth": 2,
+      "min_child_weight": 20,
+      "n_estimators": 500,
+      "subsample": 0.8
+    }
+  },
+  "TSX": {
+    "params_h1": {
+      "colsample_bytree": 0.8,
+      "learning_rate": 0.03,
+      "max_depth": 2,
+      "min_child_weight": 20,
+      "n_estimators": 200,
+      "subsample": 0.8
+    },
+    "params_h5": {
+      "colsample_bytree": 0.8,
+      "learning_rate": 0.03,
+      "max_depth": 2,
+      "min_child_weight": 20,
+      "n_estimators": 200,
+      "subsample": 0.8
+    }
+  },
+  "EURUSD": {
+    "params_h1": {
+      "colsample_bytree": 0.8,
+      "learning_rate": 0.03,
+      "max_depth": 2,
+      "min_child_weight": 20,
+      "n_estimators": 200,
+      "subsample": 0.8
+    },
+    "params_h5": {
+      "colsample_bytree": 0.8,
+      "learning_rate": 0.03,
+      "max_depth": 2,
+      "min_child_weight": 20,
+      "n_estimators": 200,
+      "subsample": 0.8
+    }
+  },
+  "GBPUSD": {
+    "params_h1": {
+      "colsample_bytree": 0.8,
+      "learning_rate": 0.03,
+      "max_depth": 2,
+      "min_child_weight": 20,
+      "n_estimators": 200,
+      "subsample": 0.8
+    },
+    "params_h5": {
+      "colsample_bytree": 0.8,
+      "learning_rate": 0.03,
+      "max_depth": 2,
+      "min_child_weight": 20,
+      "n_estimators": 200,
+      "subsample": 0.8
+    }
+  },
+  "GOLD": {
+    "params_h1": {
+      "colsample_bytree": 0.8,
+      "learning_rate": 0.03,
+      "max_depth": 3,
+      "min_child_weight": 20,
+      "n_estimators": 200,
+      "subsample": 0.8
+    },
+    "params_h5": {
+      "colsample_bytree": 0.8,
+      "learning_rate": 0.03,
+      "max_depth": 2,
+      "min_child_weight": 20,
+      "n_estimators": 200,
+      "subsample": 0.8
+    }
+  },
+  "UST10": {
+    "params_h1": {
+      "colsample_bytree": 0.8,
+      "learning_rate": 0.03,
+      "max_depth": 2,
+      "min_child_weight": 20,
+      "n_estimators": 200,
+      "subsample": 0.8
+    },
+    "params_h5": {
+      "colsample_bytree": 0.8,
+      "learning_rate": 0.03,
+      "max_depth": 3,
+      "min_child_weight": 20,
+      "n_estimators": 200,
+      "subsample": 0.8
+    }
+  },
+  "BTC": {
+    "params_h1": {
+      "colsample_bytree": 0.8,
+      "learning_rate": 0.03,
+      "max_depth": 3,
+      "min_child_weight": 20,
+      "n_estimators": 200,
+      "subsample": 0.8
+    },
+    "params_h5": {
+      "colsample_bytree": 0.8,
+      "learning_rate": 0.03,
+      "max_depth": 2,
+      "min_child_weight": 20,
+      "n_estimators": 200,
+      "subsample": 0.8
+    }
+  }
+}

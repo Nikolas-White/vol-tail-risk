@@ -1,0 +1,335 @@
+{
+  "source": "Yahoo Finance chart API v8 (the endpoint yfinance uses), fetched 2026-10-07 in the Claude desktop browser; adjusted OHLC = OHLC x adjclose/close",
+  "assets": {
+    "SPX": {
+      "asset": "SPX",
+      "raw_rows": 5474,
+      "dropped_missing_close": {
+        "n": 0,
+        "examples": []
+      },
+      "dropped_weekend": {
+        "n": 0,
+        "examples": []
+      },
+      "missing_ohl_filled_from_close": {
+        "n": 0,
+        "examples": []
+      },
+      "dropped_stale": {
+        "n": 0,
+        "examples": []
+      },
+      "dropped_spike_reversal": {
+        "n": 0,
+        "examples": []
+      },
+      "range_flagged_bad_wick": {
+        "n": 0,
+        "examples": []
+      },
+      "range_flagged_unusable": {
+        "n": 0,
+        "pct": 0.0,
+        "examples": []
+      },
+      "processed_rows": 5473,
+      "first": "2005-01-04",
+      "last": "2026-10-06",
+      "total_dropped": 0,
+      "ticker": "^GSPC",
+      "substituted": false
+    },
+    "TSX": {
+      "asset": "TSX",
+      "raw_rows": 5463,
+      "dropped_missing_close": {
+        "n": 0,
+        "examples": []
+      },
+      "dropped_weekend": {
+        "n": 0,
+        "examples": []
+      },
+      "missing_ohl_filled_from_close": {
+        "n": 0,
+        "examples": []
+      },
+      "dropped_stale": {
+        "n": 1,
+        "examples": [
+          "2008-12-17"
+        ]
+      },
+      "dropped_spike_reversal": {
+        "n": 0,
+        "examples": []
+      },
+      "range_flagged_bad_wick": {
+        "n": 0,
+        "examples": []
+      },
+      "range_flagged_unusable": {
+        "n": 9,
+        "pct": 0.16,
+        "examples": [
+          "2006-02-17",
+          "2006-02-21",
+          "2006-03-13",
+          "2006-03-15",
+          "2006-03-17",
+          "2006-07-28",
+          "2006-07-31",
+          "2006-09-26"
+        ]
+      },
+      "processed_rows": 5461,
+      "first": "2005-01-05",
+      "last": "2026-10-06",
+      "total_dropped": 1,
+      "ticker": "^GSPTSE",
+      "substituted": false
+    },
+    "EURUSD": {
+      "asset": "EURUSD",
+      "raw_rows": 5677,
+      "dropped_missing_close": {
+        "n": 33,
+        "examples": [
+          "2005-09-21",
+          "2007-09-10",
+          "2007-11-26",
+          "2007-12-18",
+          "2008-04-01",
+          "2008-05-01",
+          "2008-07-01",
+          "2008-08-01"
+        ]
+      },
+      "dropped_weekend": {
+        "n": 0,
+        "examples": []
+      },
+      "missing_ohl_filled_from_close": {
+        "n": 0,
+        "examples": []
+      },
+      "dropped_stale": {
+        "n": 0,
+        "examples": []
+      },
+      "dropped_spike_reversal": {
+        "n": 5,
+        "examples": [
+          "2008-01-08",
+          "2008-02-08",
+          "2008-09-08",
+          "2008-10-08",
+          "2008-12-08"
+        ]
+      },
+      "range_flagged_bad_wick": {
+        "n": 1,
+        "examples": [
+          "2012-01-27"
+        ]
+      },
+      "range_flagged_unusable": {
+        "n": 141,
+        "pct": 2.5,
+        "examples": [
+          "2005-06-14",
+          "2005-10-05",
+          "2005-11-30",
+          "2006-08-08",
+          "2007-03-15",
+          "2007-08-21",
+          "2008-03-17",
+          "2009-02-23"
+        ]
+      },
+      "processed_rows": 5638,
+      "first": "2005-01-04",
+      "last": "2026-10-06",
+      "total_dropped": 38,
+      "ticker": "EURUSD=X",
+      "substituted": false
+    },
+    "GBPUSD": {
+      "asset": "GBPUSD",
+      "raw_rows": 5677,
+      "dropped_missing_close": {
+        "n": 21,
+        "examples": [
+          "2005-09-21",
+          "2007-09-10",
+          "2007-11-26",
+          "2007-12-18",
+          "2007-12-19",
+          "2008-01-18",
+          "2008-01-21",
+          "2008-01-22"
+        ]
+      },
+      "dropped_weekend": {
+        "n": 0,
+        "examples": []
+      },
+      "missing_ohl_filled_from_close": {
+        "n": 0,
+        "examples": []
+      },
+      "dropped_stale": {
+        "n": 0,
+        "examples": []
+      },
+      "dropped_spike_reversal": {
+        "n": 0,
+        "examples": []
+      },
+      "range_flagged_bad_wick": {
+        "n": 1,
+        "examples": [
+          "2012-01-27"
+        ]
+      },
+      "range_flagged_unusable": {
+        "n": 120,
+        "pct": 2.12,
+        "examples": [
+          "2005-05-10",
+          "2005-10-05",
+          "2005-11-10",
+          "2005-12-26",
+          "2006-05-15",
+          "2006-06-05",
+          "2006-08-08",
+          "2006-10-03"
+        ]
+      },
+      "processed_rows": 5655,
+      "first": "2005-01-04",
+      "last": "2026-10-06",
+      "total_dropped": 21,
+      "ticker": "GBPUSD=X",
+      "substituted": false
+    },
+    "GOLD": {
+      "asset": "GOLD",
+      "raw_rows": 5474,
+      "dropped_missing_close": {
+        "n": 0,
+        "examples": []
+      },
+      "dropped_weekend": {
+        "n": 0,
+        "examples": []
+      },
+      "missing_ohl_filled_from_close": {
+        "n": 0,
+        "examples": []
+      },
+      "dropped_stale": {
+        "n": 0,
+        "examples": []
+      },
+      "dropped_spike_reversal": {
+        "n": 0,
+        "examples": []
+      },
+      "range_flagged_bad_wick": {
+        "n": 0,
+        "examples": []
+      },
+      "range_flagged_unusable": {
+        "n": 0,
+        "pct": 0.0,
+        "examples": []
+      },
+      "processed_rows": 5473,
+      "first": "2005-01-04",
+      "last": "2026-10-06",
+      "total_dropped": 0,
+      "ticker": "GLD",
+      "substituted": false
+    },
+    "UST10": {
+      "asset": "UST10",
+      "raw_rows": 5474,
+      "dropped_missing_close": {
+        "n": 0,
+        "examples": []
+      },
+      "dropped_weekend": {
+        "n": 0,
+        "examples": []
+      },
+      "missing_ohl_filled_from_close": {
+        "n": 0,
+        "examples": []
+      },
+      "dropped_stale": {
+        "n": 0,
+        "examples": []
+      },
+      "dropped_spike_reversal": {
+        "n": 0,
+        "examples": []
+      },
+      "range_flagged_bad_wick": {
+        "n": 0,
+        "examples": []
+      },
+      "range_flagged_unusable": {
+        "n": 0,
+        "pct": 0.0,
+        "examples": []
+      },
+      "processed_rows": 5473,
+      "first": "2005-01-04",
+      "last": "2026-10-06",
+      "total_dropped": 0,
+      "ticker": "TLT",
+      "substituted": false
+    },
+    "BTC": {
+      "asset": "BTC",
+      "raw_rows": 4403,
+      "dropped_missing_close": {
+        "n": 0,
+        "examples": []
+      },
+      "dropped_weekend": {
+        "n": 0,
+        "examples": []
+      },
+      "missing_ohl_filled_from_close": {
+        "n": 0,
+        "examples": []
+      },
+      "dropped_stale": {
+        "n": 0,
+        "examples": []
+      },
+      "dropped_spike_reversal": {
+        "n": 0,
+        "examples": []
+      },
+      "range_flagged_bad_wick": {
+        "n": 0,
+        "examples": []
+      },
+      "range_flagged_unusable": {
+        "n": 0,
+        "pct": 0.0,
+        "examples": []
+      },
+      "processed_rows": 4402,
+      "first": "2014-09-18",
+      "last": "2026-10-06",
+      "total_dropped": 0,
+      "ticker": "BTC-USD",
+      "substituted": false
+    }
+  }
+}

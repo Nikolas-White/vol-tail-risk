@@ -1,0 +1,410 @@
+{
+  "run_name": "real",
+  "source": "yfinance",
+  "assets": [
+    "SPX",
+    "TSX",
+    "EURUSD",
+    "GBPUSD",
+    "GOLD",
+    "UST10",
+    "BTC"
+  ],
+  "oos_start": {
+    "SPX": "2007-12-27",
+    "TSX": "2007-12-27",
+    "EURUSD": "2007-11-22",
+    "GBPUSD": "2007-11-22",
+    "GOLD": "2007-12-27",
+    "UST10": "2007-12-27",
+    "BTC": "2016-10-07"
+  },
+  "oos_end": {
+    "SPX": "2026-10-06",
+    "TSX": "2026-10-06",
+    "EURUSD": "2026-10-06",
+    "GBPUSD": "2026-10-06",
+    "GOLD": "2026-10-06",
+    "UST10": "2026-10-06",
+    "BTC": "2026-10-06"
+  },
+  "n_oos_days_total": 32325,
+  "n_models": 15,
+  "best_vol_h1": "gjr_n",
+  "best_vol_h1_avg_rank": 3.142857142857143,
+  "vol_rank_h1": [
+    {
+      "model": "gjr_n",
+      "avg_rank_qlike": 3.142857142857143,
+      "in_mcs": 6,
+      "n_assets": 7
+    },
+    {
+      "model": "xgb",
+      "avg_rank_qlike": 4.0,
+      "in_mcs": 7,
+      "n_assets": 7
+    },
+    {
+      "model": "gjr_t",
+      "avg_rank_qlike": 4.142857142857143,
+      "in_mcs": 7,
+      "n_assets": 7
+    },
+    {
+      "model": "gjr_skewt",
+      "avg_rank_qlike": 4.285714285714286,
+      "in_mcs": 6,
+      "n_assets": 7
+    },
+    {
+      "model": "garch_n",
+      "avg_rank_qlike": 4.571428571428571,
+      "in_mcs": 5,
+      "n_assets": 7
+    },
+    {
+      "model": "har",
+      "avg_rank_qlike": 5.285714285714286,
+      "in_mcs": 6,
+      "n_assets": 7
+    },
+    {
+      "model": "garch_t",
+      "avg_rank_qlike": 6.0,
+      "in_mcs": 5,
+      "n_assets": 7
+    },
+    {
+      "model": "egarch_t",
+      "avg_rank_qlike": 6.714285714285714,
+      "in_mcs": 6,
+      "n_assets": 7
+    },
+    {
+      "model": "ewma",
+      "avg_rank_qlike": 7.285714285714286,
+      "in_mcs": 3,
+      "n_assets": 7
+    },
+    {
+      "model": "roll21",
+      "avg_rank_qlike": 9.571428571428571,
+      "in_mcs": 0,
+      "n_assets": 7
+    }
+  ],
+  "qlike_gk_pct_vs_garch_n_h1": {
+    "egarch_t": 1.56,
+    "ewma": 4.53,
+    "garch_n": 0.0,
+    "garch_t": 0.48,
+    "gjr_n": -0.11,
+    "gjr_skewt": 0.25,
+    "gjr_t": 0.34,
+    "har": -9.14,
+    "roll21": 15.48,
+    "xgb": -7.28
+  },
+  "best_vol_h5": "gjr_n",
+  "best_vol_h5_avg_rank": 3.4285714285714284,
+  "vol_rank_h5": [
+    {
+      "model": "gjr_n",
+      "avg_rank_qlike": 3.4285714285714284,
+      "in_mcs": 6,
+      "n_assets": 7
+    },
+    {
+      "model": "gjr_skewt",
+      "avg_rank_qlike": 3.857142857142857,
+      "in_mcs": 6,
+      "n_assets": 7
+    },
+    {
+      "model": "garch_n",
+      "avg_rank_qlike": 4.0,
+      "in_mcs": 5,
+      "n_assets": 7
+    },
+    {
+      "model": "gjr_t",
+      "avg_rank_qlike": 4.0,
+      "in_mcs": 7,
+      "n_assets": 7
+    },
+    {
+      "model": "garch_t",
+      "avg_rank_qlike": 4.857142857142857,
+      "in_mcs": 5,
+      "n_assets": 7
+    },
+    {
+      "model": "xgb",
+      "avg_rank_qlike": 5.0,
+      "in_mcs": 6,
+      "n_assets": 7
+    },
+    {
+      "model": "har",
+      "avg_rank_qlike": 5.714285714285714,
+      "in_mcs": 7,
+      "n_assets": 7
+    },
+    {
+      "model": "egarch_t",
+      "avg_rank_qlike": 6.857142857142857,
+      "in_mcs": 6,
+      "n_assets": 7
+    },
+    {
+      "model": "ewma",
+      "avg_rank_qlike": 7.714285714285714,
+      "in_mcs": 3,
+      "n_assets": 7
+    },
+    {
+      "model": "roll21",
+      "avg_rank_qlike": 9.571428571428571,
+      "in_mcs": 0,
+      "n_assets": 7
+    }
+  ],
+  "qlike_gk_pct_vs_garch_n_h5": {
+    "egarch_t": 2.25,
+    "ewma": 7.63,
+    "garch_n": 0.0,
+    "garch_t": 1.15,
+    "gjr_n": -0.47,
+    "gjr_skewt": 0.12,
+    "gjr_t": 0.31,
+    "har": -11.84,
+    "roll21": 31.75,
+    "xgb": -1.11
+  },
+  "var_cells": 168,
+  "var_pass_kupiec_share": 0.5654761904761905,
+  "var_pass_cc_share": 0.5773809523809523,
+  "var_by_model": [
+    {
+      "model": "evt_gjr",
+      "kupiec_pass": 13,
+      "cc_pass": 13,
+      "z2_pass": 12,
+      "red": 0,
+      "cells": 14,
+      "avg_rank_fz0": 4.428571428571429
+    },
+    {
+      "model": "evt_skewt",
+      "kupiec_pass": 13,
+      "cc_pass": 13,
+      "z2_pass": 12,
+      "red": 0,
+      "cells": 14,
+      "avg_rank_fz0": 4.142857142857143
+    },
+    {
+      "model": "ewma",
+      "kupiec_pass": 0,
+      "cc_pass": 0,
+      "z2_pass": 0,
+      "red": 9,
+      "cells": 14,
+      "avg_rank_fz0": 10.857142857142858
+    },
+    {
+      "model": "fhs_gjr",
+      "kupiec_pass": 11,
+      "cc_pass": 13,
+      "z2_pass": 9,
+      "red": 0,
+      "cells": 14,
+      "avg_rank_fz0": 5.785714285714286
+    },
+    {
+      "model": "fhs_skewt",
+      "kupiec_pass": 11,
+      "cc_pass": 13,
+      "z2_pass": 9,
+      "red": 0,
+      "cells": 14,
+      "avg_rank_fz0": 5.428571428571429
+    },
+    {
+      "model": "garch_n",
+      "kupiec_pass": 3,
+      "cc_pass": 3,
+      "z2_pass": 0,
+      "red": 6,
+      "cells": 14,
+      "avg_rank_fz0": 8.928571428571429
+    },
+    {
+      "model": "garch_t",
+      "kupiec_pass": 6,
+      "cc_pass": 7,
+      "z2_pass": 6,
+      "red": 4,
+      "cells": 14,
+      "avg_rank_fz0": 5.857142857142857
+    },
+    {
+      "model": "gjr_skewt",
+      "kupiec_pass": 12,
+      "cc_pass": 11,
+      "z2_pass": 10,
+      "red": 0,
+      "cells": 14,
+      "avg_rank_fz0": 4.5
+    },
+    {
+      "model": "gjr_t",
+      "kupiec_pass": 5,
+      "cc_pass": 7,
+      "z2_pass": 4,
+      "red": 5,
+      "cells": 14,
+      "avg_rank_fz0": 6.571428571428571
+    },
+    {
+      "model": "har",
+      "kupiec_pass": 7,
+      "cc_pass": 4,
+      "z2_pass": 12,
+      "red": 0,
+      "cells": 14,
+      "avg_rank_fz0": 6.571428571428571
+    },
+    {
+      "model": "hs250",
+      "kupiec_pass": 3,
+      "cc_pass": 1,
+      "z2_pass": 0,
+      "red": 2,
+      "cells": 14,
+      "avg_rank_fz0": 11.428571428571429
+    },
+    {
+      "model": "xgb",
+      "kupiec_pass": 11,
+      "cc_pass": 12,
+      "z2_pass": 13,
+      "red": 0,
+      "cells": 14,
+      "avg_rank_fz0": 3.5
+    }
+  ],
+  "best_fz0_model": "xgb",
+  "ratings": [
+    {
+      "model": "evt_gjr",
+      "cells": 14,
+      "passed": 11,
+      "pass_share": 0.7857142857142857,
+      "red_zones": 0,
+      "rating": "Satisfactory with findings",
+      "failed_cells": "GBPUSD@97.5%, GOLD@97.5%, UST10@97.5%"
+    },
+    {
+      "model": "evt_skewt",
+      "cells": 14,
+      "passed": 11,
+      "pass_share": 0.7857142857142857,
+      "red_zones": 0,
+      "rating": "Satisfactory with findings",
+      "failed_cells": "GBPUSD@97.5%, GOLD@97.5%, UST10@97.5%"
+    },
+    {
+      "model": "xgb",
+      "cells": 14,
+      "passed": 10,
+      "pass_share": 0.7142857142857143,
+      "red_zones": 0,
+      "rating": "Satisfactory with findings",
+      "failed_cells": "SPX@97.5%, TSX@97.5%, EURUSD@97.5%, UST10@97.5%"
+    },
+    {
+      "model": "gjr_skewt",
+      "cells": 14,
+      "passed": 9,
+      "pass_share": 0.6428571428571429,
+      "red_zones": 0,
+      "rating": "Satisfactory with findings",
+      "failed_cells": "SPX@99.0%, GBPUSD@99.0%, GBPUSD@97.5%, GOLD@97.5%, BTC@97.5%"
+    },
+    {
+      "model": "fhs_gjr",
+      "cells": 14,
+      "passed": 8,
+      "pass_share": 0.5714285714285714,
+      "red_zones": 0,
+      "rating": "Satisfactory with findings",
+      "failed_cells": "SPX@99.0%, GBPUSD@99.0%, GBPUSD@97.5%, GOLD@97.5%, UST10@99.0%, UST10@97.5%"
+    },
+    {
+      "model": "fhs_skewt",
+      "cells": 14,
+      "passed": 8,
+      "pass_share": 0.5714285714285714,
+      "red_zones": 0,
+      "rating": "Satisfactory with findings",
+      "failed_cells": "SPX@99.0%, GBPUSD@99.0%, GBPUSD@97.5%, GOLD@97.5%, UST10@99.0%, UST10@97.5%"
+    },
+    {
+      "model": "garch_t",
+      "cells": 14,
+      "passed": 4,
+      "pass_share": 0.2857142857142857,
+      "red_zones": 4,
+      "rating": "Needs improvement",
+      "failed_cells": "SPX@99.0%, SPX@97.5%, TSX@99.0%, TSX@97.5%, GBPUSD@99.0%, GBPUSD@97.5%, GOLD@97.5%, UST10@97.5%, BTC@99.0%, BTC@97.5%"
+    },
+    {
+      "model": "gjr_t",
+      "cells": 14,
+      "passed": 4,
+      "pass_share": 0.2857142857142857,
+      "red_zones": 5,
+      "rating": "Needs improvement",
+      "failed_cells": "SPX@99.0%, SPX@97.5%, TSX@99.0%, TSX@97.5%, GBPUSD@99.0%, GBPUSD@97.5%, GOLD@97.5%, UST10@97.5%, BTC@99.0%, BTC@97.5%"
+    },
+    {
+      "model": "har",
+      "cells": 14,
+      "passed": 4,
+      "pass_share": 0.2857142857142857,
+      "red_zones": 0,
+      "rating": "Needs improvement",
+      "failed_cells": "SPX@99.0%, SPX@97.5%, EURUSD@99.0%, EURUSD@97.5%, GBPUSD@99.0%, GBPUSD@97.5%, UST10@99.0%, UST10@97.5%, BTC@99.0%, BTC@97.5%"
+    },
+    {
+      "model": "hs250",
+      "cells": 14,
+      "passed": 0,
+      "pass_share": 0.0,
+      "red_zones": 2,
+      "rating": "Unsatisfactory",
+      "failed_cells": "SPX@99.0%, SPX@97.5%, TSX@99.0%, TSX@97.5%, EURUSD@99.0%, EURUSD@97.5%, GBPUSD@99.0%, GBPUSD@97.5%, GOLD@99.0%, GOLD@97.5%, UST10@99.0%, UST10@97.5%, BTC@99.0%, BTC@97.5%"
+    },
+    {
+      "model": "ewma",
+      "cells": 14,
+      "passed": 0,
+      "pass_share": 0.0,
+      "red_zones": 9,
+      "rating": "Unsatisfactory",
+      "failed_cells": "SPX@99.0%, SPX@97.5%, TSX@99.0%, TSX@97.5%, EURUSD@99.0%, EURUSD@97.5%, GBPUSD@99.0%, GBPUSD@97.5%, GOLD@99.0%, GOLD@97.5%, UST10@99.0%, UST10@97.5%, BTC@99.0%, BTC@97.5%"
+    },
+    {
+      "model": "garch_n",
+      "cells": 14,
+      "passed": 0,
+      "pass_share": 0.0,
+      "red_zones": 6,
+      "rating": "Unsatisfactory",
+      "failed_cells": "SPX@99.0%, SPX@97.5%, TSX@99.0%, TSX@97.5%, EURUSD@99.0%, EURUSD@97.5%, GBPUSD@99.0%, GBPUSD@97.5%, GOLD@99.0%, GOLD@97.5%, UST10@99.0%, UST10@97.5%, BTC@99.0%, BTC@97.5%"
+    }
+  ],
+  "n_tests": 4624
+}
