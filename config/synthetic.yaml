@@ -1,0 +1,20 @@
+# Synthetic-data run: exercises the full pipeline on data simulated from known
+# GJR-GARCH-t processes. Outputs go to *separate* directories and are stamped
+# "SYNTHETIC" so they can never be confused with real market results.
+# Only keys that differ from default.yaml are listed (deep-merged at load time).
+run_name: synthetic
+
+paths:
+  raw_dir: data/synthetic/raw
+  processed_dir: data/synthetic/processed
+  results_dir: results/synthetic
+  reports_dir: reports/synthetic
+  figures_dir: reports/synthetic/figures
+
+data:
+  source: synthetic
+  start: "2005-01-03"
+  end: "2026-09-30"
+
+service:
+  forecasts_file: results/synthetic/latest_forecasts.json

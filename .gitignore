@@ -1,0 +1,30 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+.ipynb_checkpoints/
+.DS_Store
+
+# cached market data (re-download with `make data`)
+data/raw/
+data/processed/*.parquet
+data/synthetic/
+data/smoke/
+
+# large walk-forward outputs; summaries, figures and the latest forecast JSON are committed
+results/*.parquet
+results/forecasts/
+results/grids/
+results/fit/
+results/eval/*.parquet
+results/diagnostics.json
+results/synthetic/
+results/smoke/
+reports/smoke/
+!results/.gitkeep
+
+# local scratch
+_to_delete/

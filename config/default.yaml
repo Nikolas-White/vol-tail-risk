@@ -1,0 +1,133 @@
+# ---------------------------------------------------------------------------
+# voltail — all tunable parameters live here. A few structural constants (horizons 1 and 5,
+# rolling-SD / HS window lengths, the 22-day CV purge) are fixed in code and documented in METHODOLOGY.md.
+# ---------------------------------------------------------------------------
+run_name: real
+seed: 20260101
+n_jobs: 2                     # parallel workers across assets (joblib)
+
+paths:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  results_dir: results
+  reports_dir: reports
+  figures_dir: reports/figures
+
+data:
+  source: yfinance            # yfinance | synthetic
+  start: "2005-01-01"
+  end: null                   # null = today
+  auto_adjust: true           # dividend/split-adjusted OHLC (matters for GLD/TLT)
+  download_retries: 4
+  download_backoff_s: 5.0
+  # If a ticker fails, the fallbacks are tried in order; if all fail the asset is
+  # skipped and the substitution/skip is written to data/processed/data_quality.json.
+  assets:
+    SPX:    {ticker: "^GSPC",    fallbacks: ["SPY"],      name: "S&P 500 index",            asset_class: equity}
+    TSX:    {ticker: "^GSPTSE",  fallbacks: ["XIU.TO"],   name: "S&P/TSX composite index",  asset_class: equity}
+    EURUSD: {ticker: "EURUSD=X", fallbacks: [],           name: "EUR/USD spot",             asset_class: fx}
+    GBPUSD: {ticker: "GBPUSD=X", fallbacks: [],           name: "GBP/USD spot",             asset_class: fx}
+    GOLD:   {ticker: "GLD",      fallbacks: ["GC=F"],     name: "SPDR Gold Shares ETF",     asset_class: commodity}
+    UST10:  {ticker: "TLT",      fallbacks: ["IEF"],      name: "iShares 20+ Year Treasury ETF (rates proxy)", asset_class: rates}
+    BTC:    {ticker: "BTC-USD",  fallbacks: [],           name: "Bitcoin / USD",            asset_class: crypto}
+  cleaning:
+    # A day is a "bad tick" if |r_t| exceeds spike_mad_mult robust SDs AND the next
+    # day reverses at least spike_reversal_frac of it. Such rows are dropped and logged.
+    # The robust SD uses only the previous 20 days so that it adapts to crises: with a
+    # 250-day scale the first real-data run wrongly flagged the genuine S&P 500 moves of
+    # 12-13 March 2020 (DEVELOPMENT_LOG #10).
+    spike_mad_mult: 8.0
+    spike_reversal_frac: 0.8
+    spike_lookback: 20
+    # FX/ETF OHLC from free sources sometimes has High==Low or High<Close.
+    # Those days keep their close-to-close return but get NaN range proxies.
+    min_range_frac: 1.0e-7
+    # A day's high-low range is treated as a bad print if it exceeds wick_mult x the median
+    # range of the previous 20 days. Genuine extremes in this data set (2010 flash crash,
+    # Brexit, COVID, Bitcoin crashes) reach at most ~14x; the 2012-01-27 FX bad lows are 65-163x.
+    wick_mult: 25.0
+
+proxies:
+  # Which proxy HAR/ML are trained on. Squared returns are always evaluated too.
+  model_target: garman_klass
+  # Range proxies miss the overnight gap -> scale them to close-to-close variance
+  # using ONLY past data (expanding mean ratio), with a floor on history length.
+  scale_min_obs: 250
+
+walkforward:
+  min_train_obs: 750          # ~3 years burn-in before the first forecast
+  window: expanding           # expanding | rolling
+  rolling_obs: 2500
+  refit_every:                # M = monthly, Q = quarterly, Y = yearly; refit at the last obs of each period
+    garch: M                  # GARCH family + the tail models built on it (FHS, EVT)
+    har: M
+    ml: Q                     # quarterly (expensive)
+  horizons: [1, 5]
+
+models:
+  vol:                        # models producing variance forecasts (evaluated with QLIKE etc.)
+    - roll21
+    - ewma
+    - garch_n
+    - garch_t
+    - gjr_n
+    - gjr_t
+    - gjr_skewt
+    - egarch_t
+    - har
+    - xgb
+  var:                        # models producing VaR/ES (evaluated with Kupiec etc.)
+    - hs250
+    - ewma
+    - garch_n
+    - garch_t
+    - gjr_t
+    - gjr_skewt
+    - fhs_gjr
+    - evt_gjr
+    - fhs_skewt               # pre-registered question H2 (METHODOLOGY section 10)
+    - evt_skewt
+    - har
+    - xgb
+  ewma_lambda: 0.94
+  egarch_sim_draws: 1000      # simulation draws for EGARCH multi-step forecasts
+  tail_quantile_grid: 40      # quantiles stored per day for the ES Monte Carlo test
+  evt:
+    threshold_quantile: 0.90  # losses above the 90th pct are "peaks"
+  har:
+    lags: [1, 5, 22]
+    log: true
+  xgb:
+    target_log: true
+    tune_grid:
+      max_depth: [2, 3]
+      n_estimators: [200, 500]
+      learning_rate: [0.03]
+      subsample: [0.8]
+      colsample_bytree: [0.8]
+      min_child_weight: [20]
+    cv_folds: 3
+    cross_asset_driver: SPX   # lagged features from this asset are added to every other asset
+
+risk:
+  alphas: [0.01, 0.025]       # 99% and 97.5% VaR/ES (left tail)
+
+evaluation:
+  primary_vol_proxy: sq             # r^2: conditionally unbiased -> QLIKE ranking is robust (Patton 2011)
+  secondary_vol_proxy: gk           # Garman-Klass rescaled to close-to-close with a past-only ratio
+  benchmark_vol_model: garch_n
+  mcs:
+    size: 0.10
+    reps: 1000
+    block_size: 10
+  z2_sims: 5000
+  basel_window: 250
+  regimes:
+    GFC:        ["2008-01-01", "2009-12-31"]
+    COVID:      ["2020-02-15", "2020-06-30"]
+    Y2022:      ["2022-01-01", "2022-12-31"]
+    Calm:       [["2013-01-01", "2014-12-31"], ["2017-01-01", "2017-12-31"], ["2019-01-01", "2019-12-31"]]
+
+service:
+  default_model: gjr_t             # model served by /forecast unless ?model= is given
+  forecasts_file: results/latest_forecasts.json

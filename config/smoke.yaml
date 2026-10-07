@@ -1,0 +1,44 @@
+# Tiny, fast configuration used by the end-to-end pytest and CI smoke run.
+run_name: smoke
+n_jobs: 1
+
+paths:
+  raw_dir: data/smoke/raw
+  processed_dir: data/smoke/processed
+  results_dir: results/smoke
+  reports_dir: reports/smoke
+  figures_dir: reports/smoke/figures
+
+data:
+  source: synthetic
+  start: "2012-01-02"
+  end: "2016-12-30"
+  assets:
+    SPX:    {ticker: "SYN_SPX", name: "Synthetic equity", asset_class: equity}
+    EURUSD: {ticker: "SYN_FX",  name: "Synthetic FX",     asset_class: fx}
+
+walkforward:
+  min_train_obs: 600
+  refit_every: {garch: Q, har: Q, ml: Y}
+
+models:
+  egarch_sim_draws: 200
+  xgb:
+    tune_grid:
+      max_depth: [2]
+      n_estimators: [100]
+      learning_rate: [0.05]
+      subsample: [0.8]
+      colsample_bytree: [0.8]
+      min_child_weight: [20]
+    cv_folds: 2
+
+evaluation:
+  mcs: {size: 0.10, reps: 200, block_size: 10}
+  z2_sims: 1000
+  regimes:
+    Calm: ["2015-01-01", "2015-12-31"]
+    Stress: ["2016-01-01", "2016-06-30"]
+
+service:
+  forecasts_file: results/smoke/latest_forecasts.json
