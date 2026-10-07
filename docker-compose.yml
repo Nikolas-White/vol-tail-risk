@@ -1,0 +1,25 @@
+# One command:  docker compose up --build
+#   API        -> http://localhost:8000/docs
+#
+# By default the API serves the clearly-labelled SYNTHETIC example file so the
+# containers work out of the box. To serve real forecasts:
+#   docker compose run --rm pipeline          # writes ./results/latest_forecasts.json
+#   VOLTAIL_FORECASTS_FILE=/app/results/latest_forecasts.json docker compose up -d
+services:
+  api:
+    build: .
+    image: voltail:latest
+    ports: ["8000:8000"]
+    environment:
+      VOLTAIL_FORECASTS_FILE: ${VOLTAIL_FORECASTS_FILE:-/app/examples/latest_forecasts.synthetic.json}
+    volumes:
+      - ./results:/app/results
+    restart: unless-stopped
+
+  pipeline:
+    image: voltail:latest
+    profiles: ["pipeline"]
+    command: ["make", "data", "forecast"]
+    volumes:
+      - ./results:/app/results
+      - ./data:/app/data

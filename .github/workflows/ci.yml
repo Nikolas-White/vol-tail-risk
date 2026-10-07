@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements.lock
+      - name: Install
+        run: |
+          pip install -r requirements.lock
+          pip install -e . --no-deps
+      - name: Lint
+        run: |
+          ruff check src tests scripts
+          black --check src tests scripts
+      - name: Tests (includes no-lookahead, scratch-vs-library, VaR tests, API, end-to-end)
+        run: pytest -ra
+
+  docker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: lint-test
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t voltail:ci .
+      - name: Smoke-test the API container
+        run: |
+          docker run -d --name api -p 8000:8000 \
+            -e VOLTAIL_FORECASTS_FILE=/app/examples/latest_forecasts.synthetic.json voltail:ci
+          for i in $(seq 1 30); do curl -fsS localhost:8000/health && break; sleep 1; done
+          curl -fsS localhost:8000/forecast/SPX | python -m json.tool
+          test "$(curl -s -o /dev/null -w '%{http_code}' localhost:8000/forecast/NOPE)" = "404"
+          docker rm -f api
